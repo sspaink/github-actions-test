@@ -1,15 +1,14 @@
 name: Example
-on: [push]
+on:
+  pull_request:
+    branches: [ master ]
 
 jobs:
   my_job:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Mask fruit
+    - name: Comment with gopher
       uses: BattleBas/action-gophers@master
       with:
-        fruit: banana
-
-    - name: Echo fruit
-      run: echo "apple, banana, and orange"
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
